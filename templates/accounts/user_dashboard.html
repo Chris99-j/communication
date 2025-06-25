@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="{% static 'accounts/dashboard.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <main class="main-content">
+    <!-- Home Tab -->
+    <section id="home" class="tab-content active">
+      <h1>Welcome, {{ user.username }} 👋</h1>
+      <p class="subtitle">Here’s what’s happening today.</p>
+      <div class="cards">
+        <div class="card" onclick="showCardContent('inbox')">📥 Inboxx</div>
+        <div class="card" onclick="showCardContent('tasks')">📝 Tasks</div>
+        <div class="card" onclick="showCardContent('analytics')">📊 Analytics</div>
+      </div>
+    </section>
+
+    
+     <div class="card-detail" id="inbox-content">
+    <h3>Inbox</h3>
+    <ul>
+      <li>Welcome to your dashboard!</li>
+      <li>No unread messages.</li>
+    </ul>
+  </div>
+
+  <div class="card-detail" id="tasks-content">
+    <h3>Tasks</h3>
+    <ul>
+      <li>✅ Complete your profile</li>
+      <li>🕐 Setup email alerts</li>
+    </ul>
+  </div>
+
+  <div class="card-detail" id="analytics-content">
+    <h3>Analytics</h3>
+    <p>You have 0 page views today.</p>
+  </div>
+</div>
+
+    <!-- Messages Tab -->
+    <section id="messages" class="tab-content">
+      <h2>Messages</h2>
+      <p>No new messages yet.</p>
+    </section>
+
+    <!-- Profile Tab -->
+    <section id="profile" class="tab-content">
+      <h2>Your Profile</h2>
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+    </section>
+
+    <!-- Settings Tab -->
+    <section id="settings" class="tab-content">
+      <h2>Settings</h2>
+      <p>Feature settings coming soon.</p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="#" class="tab active" data-tab="home">🏠<span>Home</span></a>
+    <a href="#" class="tab" data-tab="messages">💬<span>Messages</span></a>
+    <a href="#" class="tab" data-tab="profile">👤<span>Profile</span></a>
+    <a href="#" class="tab" data-tab="settings">⚙️<span>Settings</span></a>
+    <a href="{% url 'logout' %}" class="tab logout">🚪<span>Logout</span></a>
+  </nav>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab[data-tab]');
+    const sections = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+
+        // Remove active class from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        sections.forEach(sec => sec.classList.remove('active'));
+
+        // Add active class to selected
+        tab.classList.add('active');
+        const selected = document.getElementById(tab.dataset.tab);
+        if (selected) selected.classList.add('active');
+      });
+    });
+
+    function showCardContent(id) {
+    document.querySelectorAll('.card-detail').forEach(el => el.style.display = 'none');
+    document.getElementById(`${id}-content`).style.display = 'block';
+  }
+
+  // Optional: Hide all details on start
+  document.querySelectorAll('.card-detail').forEach(el => el.style.display = 'none');
+  </script>
+</body>
+</html>

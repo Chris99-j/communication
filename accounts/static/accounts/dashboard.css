@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  padding-bottom: 60px; /* Space for bottom nav */
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.main-content h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #777;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1 1 100px;
+  min-width: 120px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #1e1e2f;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #333;
+  z-index: 100;
+}
+
+.bottom-nav .tab {
+  text-align: center;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: color 0.3s;
+}
+
+.bottom-nav .tab span {
+  font-size: 0.7rem;
+}
+
+.bottom-nav .tab:hover {
+  color: white;
+}
+
+.bottom-nav .logout {
+  color: #ff6b6b;
+}
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Add this to highlight active tab */
+.bottom-nav .tab.active {
+  color: #00b4d8;
+  font-weight: bold;
+}
+.cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.card {
+  flex: 1;
+  min-width: 100px;
+  background: #f0f4f8;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.card:hover {
+  background-color: #e0f7fa;
+}
+
+.card-detail {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  padding: 3rem;
+  margin-top: 1rem;
+}
